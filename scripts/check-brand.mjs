@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * Brand guard: enforces the code-review rules that a machine can check.
- *  1. No hex color codes in pages, components or islands (use semantic tokens).
+ *  1. No hex color codes in pages, components or layouts (use semantic tokens).
  *  2. No spec-looking numbers typed into pages (they come from tullomer.json).
  *  3. No exclamation marks in visible copy of pages.
  *  4. Cream band at most once per page.
- *  5. Every page passes a description to BaseLayout.
+ *  5. Every page renders <Seo> with a description.
  * Run: npm run lint:brand
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -22,8 +22,8 @@ const errors = [];
 const report = (file, line, msg) => errors.push(`${relative(root, file)}:${line}  ${msg}`);
 const lineOf = (src, index) => src.slice(0, index).split('\n').length;
 
-const codeDirs = ['src/pages', 'src/components', 'src/islands'].map((d) => join(root, d));
-const codeFiles = codeDirs.flatMap(walk).filter((f) => /\.(astro|tsx?|jsx?|css)$/.test(f));
+const codeDirs = ['src/pages', 'src/components', 'src/layouts'].map((d) => join(root, d));
+const codeFiles = codeDirs.flatMap(walk).filter((f) => /\.(tsx?|jsx?|css)$/.test(f));
 
 const HEX = /(?<![\w&/])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b/g;
 const SPEC = /\b\d+(?:[.,]\d+)?\s?(?:MPa|GPa|°C|g\/cm³|g\/cm3|mm\/s|g\/den|denier)\b/g;
@@ -40,22 +40,22 @@ for (const file of codeFiles) {
   }
 }
 
-const pages = walk(join(root, 'src/pages')).filter((f) => f.endsWith('.astro'));
+const pages = walk(join(root, 'src/pages')).filter((f) => /.(tsx|jsx)$/.test(f));
 for (const file of pages) {
   const src = readFileSync(file, 'utf8');
   const template = src.replace(/^---[\s\S]*?---/, '').replace(/<!--[\s\S]*?-->/g, '').replace(/<script[\s\S]*?<\/script>/g, '');
   // Text between tags, and string attributes that render as copy.
   const copy = [...template.matchAll(/>([^<>{}]+)</g), ...template.matchAll(/\b(?:title|lede|heading|description|text)="([^"]*)"/g)];
   for (const m of copy) {
-    if (m[1].includes('!')) report(file, lineOf(src, src.indexOf(m[1])), 'exclamation mark in copy: brand voice says no');
+    if (/!(?!=)/.test(m[1]) && !/=>|&&/.test(m[1])) report(file, lineOf(src, src.indexOf(m[1])), 'exclamation mark in copy: brand voice says no');
   }
   const creamCount =
     (template.match(/tone="cream"/g) ?? []).length +
     (template.match(/<WhereToBuyBand\b/g) ?? []).length +
     (template.match(/\bband-cream\b|\bbg-cream\b/g) ?? []).length;
-  if (creamCount > 1 && !file.endsWith('styleguide.astro')) report(file, 1, `cream used ${creamCount} times: at most once per page`);
-  if (src.includes('<BaseLayout') && !/<BaseLayout[\s\S]*?description=/.test(src)) {
-    report(file, 1, 'BaseLayout is missing a description');
+  if (creamCount > 1 && !/Styleguide.tsx$/.test(file)) report(file, 1, `cream used ${creamCount} times: at most once per page`);
+  if (!/<Seo\b[\s\S]*?description=/.test(src)) {
+    report(file, 1, 'page is missing <Seo> with a description');
   }
 }
 
