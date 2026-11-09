@@ -44,11 +44,18 @@ index.html      the single HTML page Vite serves
 src/
   main.tsx      entry point: mounts the router, imports global.css
   router.tsx    every route, one line each
-  layouts/      BaseLayout.tsx: skip link, header, <Outlet /> for the page, footer
+  layouts/      BaseLayout.tsx: skip link, #1 NoticeBar, #2 Header, <Outlet /> for the page, #5 Footer
   pages/        one component per route: Home, Material, Fiber, Applications, ZCad,
                 Resources, About, Contact, WhereToBuy, plus Styleguide and NotFound
-  components/   shared parts: Header, Footer, Button, Card, Logo, Section, PageHero,
-                WhereToBuyBand, Seo, SpecTabs (interactive example), nav.ts (site navigation)
+  components/
+    shared/     team sheet #1–#11: NoticeBar, Header, Navbar, MobileMenu, Footer, PageHero,
+                SectionHeading, Button, SpecRail, ChecklistCard, StrengthBarChart
+    home/       #12–#16: HomeHero, ZcadLiteWidget, PathsCards, HowZcadWorks, PureVsMmpCards
+    material/   #17–#20: SpecTable, DownloadsList, WhyReplaceMetals, VideoSection
+    pages/      #21–#27: ApplicationCards, ZcadTool, ResourcesList, CompanyStory,
+                ContactForm, ContactInfo, ResellerList
+    (top level) working building blocks: Band, Section, Card, Logo, Seo, SpecTabs, and
+                reference versions of Button.tsx / PageHero.tsx used by Styleguide and 404
   data/         tullomer.json: every Tullomer spec number
   lib/          specs.ts (spec helpers), news.ts (news loader), styles.ts, cx.ts
   content/news/ news posts in Markdown with frontmatter
@@ -57,20 +64,18 @@ public/         logo.svg, favicon, images/, downloads/ (PDFs)
 scripts/        check-brand.mjs: the brand guard
 ```
 
-## Building your page
+## Building your component
 
-1. Find your assigned page in `src/pages/` (for example `Material.tsx`). Each one is a stub with a hero and TODO sections. Build it section by section from the concept page ("Website v2"), using brand guide fonts and colors.
-2. Start the page with `<Seo title="..." description="..." path="/your-route" />`, then reuse parts from `src/components/`:
-   - `<PageHero title lede eyebrow>`: the page hero.
-   - `<Section tone="bg | alt | steel | cream" heading eyebrow>`: a full-width band.
-   - `<Card>`, `<Button variant="primary | outline" href>`, `<Logo />`.
-   - `<WhereToBuyBand />`: the one cream band on the page.
-   The header and footer come from `BaseLayout` automatically.
-3. Something clickable (tabs, charts, lookups)? Build it as its own component in `src/components/` with React state. `SpecTabs.tsx` is the reference for keyboard support.
-4. Internal links use `<Link to="/route">` from `react-router` (or `<Button href="/route">`), not a plain `<a>`, so pages switch without a reload.
-5. New route? Add one line to `src/router.tsx`, and to `src/components/nav.ts` if it belongs in the menu.
-6. Spec numbers: `import { spec, specRange } from '@/lib/specs'` and write `{spec('filament.tensileStrength')}`.
-7. Preview it at `http://localhost:4321/<your-route>`.
+The site is split into components #1–#27, matching the team sheet. Each one starts as a dashed placeholder box that lists what belongs there, and it's already placed on the right pages, so you can see where your work will appear.
+
+1. Find your component number on the team sheet and open its file (the header comment has the number, sprint, task and which pages use it). For example, #17 is `src/components/material/SpecTable.tsx`.
+2. Replace the placeholder `<div className="placeholder">…</div>` with the real component. **Keep the file name and the export name**, so the pages that use it keep working.
+3. Build it from the concept page ("Website v2") with brand tokens and type classes. Reuse the building blocks in `src/components/`: `<Section>`, `<Card>`, `<Logo />`, and the reference `Button.tsx` / `PageHero.tsx`.
+4. Something clickable (tabs, charts, lookups)? Use React state. `SpecTabs.tsx` is the reference for keyboard support.
+5. Internal links use `<Link to="/route">` from `react-router`, not a plain `<a>`, so pages switch without a reload.
+6. Pages live in `src/pages/` and set their title and description with `<Seo>`. Sections are wrapped in `<Band tone="bg | alt">`. New route? Add one line to `src/router.tsx`, and a link in #3 Navbar.
+7. Spec numbers: `import { spec, specRange } from '@/lib/specs'` and write `{spec('filament.tensileStrength')}`.
+8. Preview it at `http://localhost:4321/<your-route>`.
 
 ## Brand rules
 

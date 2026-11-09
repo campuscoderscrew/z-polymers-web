@@ -1,16 +1,33 @@
-/** Site shell: skip link, header, routed page, footer. */
+/**
+ * Site shell: skip link, #1 Notice bar, #2 Header, routed page, #5 Footer.
+ * The shared components are placeholders until each one is built.
+ */
 import { Outlet, ScrollRestoration } from 'react-router';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import NoticeBar from '@/components/shared/NoticeBar';
+import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
 
 export default function BaseLayout() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-btn bg-steel px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        Skip to content
+      </a>
+      <div className="container-site py-3">
+        <NoticeBar />
+      </div>
       <Header />
       <main id="main" className="flex-1">
         <Outlet />
       </main>
-      <Footer />
+      <footer className="border-t border-border bg-bg-alt">
+        <div className="container-site py-12">
+          <Footer />
+        </div>
+      </footer>
       <ScrollRestoration />
     </div>
   );

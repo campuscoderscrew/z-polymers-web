@@ -1,12 +1,15 @@
 /**
- * Tullomer filament
- * Build section by section from the concept page ("Website v2").
+ * Material (Tullomer filament). Sections follow the team sheet.
  * Spec numbers come from @/lib/specs (src/data/tullomer.json), never typed here.
  */
 import Seo from '@/components/Seo';
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
-import WhereToBuyBand from '@/components/WhereToBuyBand';
+import Band from '@/components/Band';
+import PageHero from '@/components/shared/PageHero';
+import SpecRail from '@/components/shared/SpecRail';
+import SpecTable from '@/components/material/SpecTable';
+import WhyReplaceMetals from '@/components/material/WhyReplaceMetals';
+import DownloadsList from '@/components/material/DownloadsList';
+import VideoSection from '@/components/material/VideoSection';
 
 export default function Material() {
   return (
@@ -16,25 +19,24 @@ export default function Material() {
         description="Tullomer™ 3D printing filament: mechanical properties, print settings and datasheets."
         path="/material"
       />
-      <PageHero
-        eyebrow="Material"
-        title="Tullomer™ filament"
-        lede="Mechanical data, print settings and datasheets for Tullomer™ 3D printing filament."
-      />
-
-      <Section tone="alt" id="key-properties" heading="Key properties">
-        <p className="type-body mx-auto text-center">TODO: build this section from the concept page ("Website v2").</p>
-      </Section>
-
-      <Section tone="steel" id="print-settings" heading="Print settings">
-        <p className="type-body mx-auto text-center">TODO: build this section from the concept page ("Website v2").</p>
-      </Section>
-
-      <Section tone="bg" id="datasheets" heading="Datasheets">
-        <p className="type-body mx-auto text-center">TODO: build this section from the concept page ("Website v2").</p>
-      </Section>
-
-      <WhereToBuyBand />
+      <Band>
+        <PageHero />
+      </Band>
+      <Band tone="alt">
+        <SpecRail />
+      </Band>
+      <Band withHeading>
+        <SpecTable />
+      </Band>
+      <Band tone="alt" withHeading>
+        <WhyReplaceMetals />
+      </Band>
+      <Band withHeading>
+        <DownloadsList />
+      </Band>
+      <Band tone="alt" withHeading>
+        <VideoSection />
+      </Band>
     </>
   );
 }
