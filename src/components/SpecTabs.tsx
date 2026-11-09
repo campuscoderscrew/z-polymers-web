@@ -1,9 +1,9 @@
 /**
- * SpecTabs: example island. Accessible tabs (WAI-ARIA tabs pattern) that show
+ * SpecTabs: example interactive component. Accessible tabs (WAI-ARIA tabs pattern) that show
  * Tullomer specs from src/data/tullomer.json.
  *
- * Use on a page with a client directive:
- *   <SpecTabs client:visible />
+ * Use on a page:
+ *   <SpecTabs />
  */
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Layers, Spool } from 'lucide-react';

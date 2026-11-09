@@ -6,12 +6,13 @@ The new z-polymers.com, built by Campus Coders Crew, Team Cookiecutter. Z-Polyme
 
 | Tool | Job |
 | --- | --- |
-| Astro | Builds every page to static HTML |
-| React (`@astrojs/react`) | Interactive parts only: tabs, charts, lookups |
+| Vite | Dev server and production build |
+| React 19 + TypeScript | Every page and component |
+| React Router | Client-side routing (all routes in `src/router.tsx`) |
 | Tailwind CSS v4 | Styling. Brand tokens live in `src/styles/global.css` under `@theme` |
 | Fontsource | Self-hosted Quicksand and Nunito Sans |
 | lucide-react | Icons, `strokeWidth={1.75}` |
-| Netlify / Vercel | Hosting, plus a preview link for every pull request (`netlify.toml` and `vercel.json` are both included) |
+| Netlify / Vercel | Hosting, plus a preview link for every pull request. `netlify.toml` and `vercel.json` are both included and send every route to `index.html` so deep links work |
 
 ## Local setup
 
@@ -29,26 +30,28 @@ The site runs at http://localhost:4321. Open `/styleguide` first. It shows every
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Start the dev server with live reload |
-| `npm run build` | Build the production site into `dist/` |
+| `npm run build` | Type-check, then build the production site into `dist/` |
 | `npm run preview` | Serve the built site locally to check it |
 | `npm run check` | Type-check, then run the brand guard |
-| `npm run lint:brand` | Brand guard only: hex codes, typed spec numbers, exclamation marks, cream count, missing descriptions |
+| `npm run lint:brand` | Brand guard only: hex codes, typed spec numbers, exclamation marks, cream count, pages without `<Seo>` |
 
-VS Code: install the recommended extensions (Astro, Tailwind CSS IntelliSense) when prompted.
+VS Code: install the recommended extensions (Tailwind CSS IntelliSense) when prompted.
 
 ## Project structure
 
 ```
+index.html      the single HTML page Vite serves
 src/
-  layouts/      BaseLayout.astro: header, footer, imports global.css; requires title + description
-  pages/        one .astro file per route: index, material, material/fiber, applications, z-cad,
-                resources, about, contact, where-to-buy, plus styleguide and 404
-  components/   shared Astro parts: Header, Footer, Button, Card, Logo, Section, PageHero,
-                WhereToBuyBand, nav.ts (site navigation)
-  islands/      interactive React components (client-side only). SpecTabs.tsx is the example
+  main.tsx      entry point: mounts the router, imports global.css
+  router.tsx    every route, one line each
+  layouts/      BaseLayout.tsx: skip link, header, <Outlet /> for the page, footer
+  pages/        one component per route: Home, Material, Fiber, Applications, ZCad,
+                Resources, About, Contact, WhereToBuy, plus Styleguide and NotFound
+  components/   shared parts: Header, Footer, Button, Card, Logo, Section, PageHero,
+                WhereToBuyBand, Seo, SpecTabs (interactive example), nav.ts (site navigation)
   data/         tullomer.json: every Tullomer spec number
-  lib/          specs.ts: spec(), specRange(), specMethod() helpers for tullomer.json
-  content/news/ news posts in Markdown (schema in src/content.config.ts)
+  lib/          specs.ts (spec helpers), news.ts (news loader), styles.ts, cx.ts
+  content/news/ news posts in Markdown with frontmatter
   styles/       global.css: fonts, brand tokens, type classes
 public/         logo.svg, favicon, images/, downloads/ (PDFs)
 scripts/        check-brand.mjs: the brand guard
@@ -56,15 +59,18 @@ scripts/        check-brand.mjs: the brand guard
 
 ## Building your page
 
-1. Find your assigned page in `src/pages/` (for example `material.astro`). Each one is a stub with a hero and TODO sections. Build it section by section from the concept page ("Website v2"), using brand guide fonts and colors.
-2. Wrap it in `BaseLayout`, and reuse parts from `src/components/`:
+1. Find your assigned page in `src/pages/` (for example `Material.tsx`). Each one is a stub with a hero and TODO sections. Build it section by section from the concept page ("Website v2"), using brand guide fonts and colors.
+2. Start the page with `<Seo title="..." description="..." path="/your-route" />`, then reuse parts from `src/components/`:
    - `<PageHero title lede eyebrow>`: the page hero.
    - `<Section tone="bg | alt | steel | cream" heading eyebrow>`: a full-width band.
-   - `<Card>`, `<Button variant="primary | outline">`, `<Logo />`.
-   - `<WhereToBuyBand />`: the page's one cream band.
-3. Something clickable? Build it as a React component in `src/islands/`. Add it to the page with a `client:` directive, for example `<PrintSettingsTabs client:visible />`.
-4. Spec numbers: `import { spec, specRange } from '@/lib/specs'` and write `{spec('filament.tensileStrength')}`.
-5. Preview it at `http://localhost:4321/<your-route>`.
+   - `<Card>`, `<Button variant="primary | outline" href>`, `<Logo />`.
+   - `<WhereToBuyBand />`: the one cream band on the page.
+   The header and footer come from `BaseLayout` automatically.
+3. Something clickable (tabs, charts, lookups)? Build it as its own component in `src/components/` with React state. `SpecTabs.tsx` is the reference for keyboard support.
+4. Internal links use `<Link to="/route">` from `react-router` (or `<Button href="/route">`), not a plain `<a>`, so pages switch without a reload.
+5. New route? Add one line to `src/router.tsx`, and to `src/components/nav.ts` if it belongs in the menu.
+6. Spec numbers: `import { spec, specRange } from '@/lib/specs'` and write `{spec('filament.tensileStrength')}`.
+7. Preview it at `http://localhost:4321/<your-route>`.
 
 ## Brand rules
 
@@ -176,7 +182,7 @@ The PR template (`.github/pull_request_template.md`) includes it:
 ## Open items
 
 - Real Tullomer spec values in `src/data/tullomer.json` (currently `null`, shown as "—").
-- Final logo file (replace the placeholder in `src/components/Logo.astro` and `public/logo.svg`).
+- Final logo file (replace the placeholder in `src/components/Logo.tsx` and `public/logo.svg`).
 - Steel ramp from the brand team (replaces the provisional surface, field, steel-dark and btn-hover values).
 - Contact form backend (Netlify Forms or a form service, once the host is chosen).
 - Default social image `public/og-default.png`.
