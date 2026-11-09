@@ -1,12 +1,11 @@
 /**
  * About
- * Build section by section from the concept page ("Website v2").
- * Spec numbers come from @/lib/specs (src/data/tullomer.json), never typed here.
+ * Sections follow the team sheet; each placeholder is replaced by its owner.
  */
 import Seo from '@/components/Seo';
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
-import WhereToBuyBand from '@/components/WhereToBuyBand';
+import Band from '@/components/Band';
+import PageHero from '@/components/shared/PageHero.jsx';
+import CompanyStory from '@/components/pages/CompanyStory.jsx';
 
 export default function About() {
   return (
@@ -16,21 +15,12 @@ export default function About() {
         description="About Z-Polymers, the company behind Tullomer™."
         path="/about"
       />
-      <PageHero
-        eyebrow="About"
-        title="About Z-Polymers"
-        lede="The company behind Tullomer™."
-      />
-
-      <Section tone="alt" id="our-story" heading="Our story">
-        <p className="type-body mx-auto text-center">TODO: build this section from the concept page ("Website v2").</p>
-      </Section>
-
-      <Section tone="steel" id="team" heading="Team">
-        <p className="type-body mx-auto text-center">TODO: build this section from the concept page ("Website v2").</p>
-      </Section>
-
-      <WhereToBuyBand />
+      <Band>
+        <PageHero />
+      </Band>
+      <Band tone="alt">
+        <CompanyStory />
+      </Band>
     </>
   );
 }

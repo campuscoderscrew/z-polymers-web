@@ -43,6 +43,9 @@
   /* Shapes */
   --radius-btn: 8px;
   --radius-card: 16px;
+
+  /* Page width: gives max-w-site */
+  --container-site: 76rem;
 }
 
 /* ------------------------------------------------------------------ */
@@ -292,5 +295,36 @@
   }
   @media (width >= 64rem) {
     padding-inline: 2rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 6. Placeholders (team sheet #1–#27)                                 */
+/* Dashed box with a title and a list of what belongs there.           */
+/* Delete a component's placeholder div when you build the real thing. */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    border-radius: var(--radius-card);
+    border: 2px dashed color-mix(in srgb, var(--z-border-control) 60%, transparent);
+    color: var(--z-fg-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .placeholder-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--z-fg-strong);
+  }
+  .placeholder ul {
+    list-style: disc;
+    padding-left: 1.2em;
   }
 }
