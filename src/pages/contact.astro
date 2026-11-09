@@ -1,0 +1,44 @@
+---
+/**
+ * Contact. The form is a static placeholder: wire it to Netlify Forms or a
+ * form service once hosting is chosen.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Section from '@/components/Section.astro';
+import Button from '@/components/Button.astro';
+import WhereToBuyBand from '@/components/WhereToBuyBand.astro';
+
+const field =
+  'min-h-12 w-full rounded-btn border border-border-control bg-field px-4 py-3 text-fg-strong placeholder:text-fg-muted';
+---
+<BaseLayout
+  title="Contact"
+  description="Contact Z-Polymers about Tullomer™ filament, fiber, samples and distribution."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Talk to Z-Polymers"
+    lede="Questions about Tullomer™, samples or distribution."
+  />
+
+  <Section tone="alt" id="form" heading="Send a message">
+    <form class="mx-auto grid max-w-xl gap-6" method="post" action="#">
+      <div class="grid gap-2">
+        <label for="name" class="type-label">Name</label>
+        <input id="name" name="name" autocomplete="name" required class={field} />
+      </div>
+      <div class="grid gap-2">
+        <label for="email" class="type-label">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required class={field} />
+      </div>
+      <div class="grid gap-2">
+        <label for="message" class="type-label">Message</label>
+        <textarea id="message" name="message" rows="5" required class={field}></textarea>
+      </div>
+      <Button type="submit" class="justify-self-start">Send message</Button>
+    </form>
+  </Section>
+
+  <WhereToBuyBand />
+</BaseLayout>

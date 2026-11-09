@@ -1,0 +1,52 @@
+---
+/**
+ * Full-width band. Square corners are allowed here (and only here).
+ *  - bg:    page ground (bg-bg)
+ *  - alt:   alternating band (bg-bg-alt)
+ *  - steel: brand feature band, one per page. White text, white underlined links.
+ *  - cream: "Where to buy" only, once per page. Ink text.
+ * Never put two bands of the same tone back to back.
+ */
+type Tone = 'bg' | 'alt' | 'steel' | 'cream';
+interface Props {
+  tone?: Tone;
+  id?: string;
+  class?: string;
+  /** Visible heading (rendered with .type-section). */
+  heading?: string;
+  /** Small label above the heading. */
+  eyebrow?: string;
+  /** Use 'h1' only for a page's first band if it has no separate hero. */
+  as?: 'h1' | 'h2';
+}
+const { tone = 'bg', id, class: className, heading, eyebrow, as: Tag = 'h2' } = Astro.props;
+
+const tones: Record<Tone, string> = {
+  bg: 'bg-bg',
+  alt: 'bg-bg-alt',
+  steel: 'band-steel',
+  cream: 'band-cream',
+};
+const headingId = heading && id ? `${id}-heading` : undefined;
+---
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={[tones[tone], 'py-16 md:py-24', className]}
+>
+  <div class="container-site">
+    {
+      (eyebrow || heading) && (
+        <header class="mb-10 flex flex-col items-center gap-3 text-center md:mb-14">
+          {eyebrow && <p class="type-label">{eyebrow}</p>}
+          {heading && (
+            <Tag id={headingId} class="type-section">
+              {heading}
+            </Tag>
+          )}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,26 @@
+{
+  "_readme": "Single source of truth for every Tullomer spec number. Never type a spec number into a page. Every value needs a test method that backs it. Values are null until filled from the official datasheet.",
+  "_status": "TODO: fill from the Tullomer datasheet",
+  "filament": {
+    "name": "Tullomer™ filament",
+    "diameter": { "value": null, "unit": "mm", "tolerance": null, "method": null },
+    "density": { "value": null, "unit": "g/cm³", "method": null },
+    "tensileStrength": { "value": null, "unit": "MPa", "method": null },
+    "tensileModulus": { "value": null, "unit": "GPa", "method": null },
+    "elongationAtBreak": { "value": null, "unit": "%", "method": null },
+    "flexuralStrength": { "value": null, "unit": "MPa", "method": null },
+    "heatDeflectionTemp": { "value": null, "unit": "°C", "method": null },
+    "print": {
+      "nozzleTemp": { "min": null, "max": null, "unit": "°C", "method": null },
+      "bedTemp": { "min": null, "max": null, "unit": "°C", "method": null },
+      "printSpeed": { "min": null, "max": null, "unit": "mm/s", "method": null }
+    }
+  },
+  "fiber": {
+    "name": "Tullomer™ fiber",
+    "linearDensity": { "value": null, "unit": "denier", "method": null },
+    "tenacity": { "value": null, "unit": "g/den", "method": null },
+    "elongationAtBreak": { "value": null, "unit": "%", "method": null },
+    "density": { "value": null, "unit": "g/cm³", "method": null }
+  }
+}

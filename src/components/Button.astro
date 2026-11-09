@@ -1,0 +1,42 @@
+---
+/**
+ * Button / link-button.
+ *  - primary:  steel, white text (default)
+ *  - outline:  transparent with border-border-control
+ *  - cream:    the "Where to buy" call to action, ink text. Use once per page.
+ * Renders <a> when href is set, otherwise <button>. Always >= 48px tall.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'outline' | 'cream';
+type Props = {
+  variant?: Variant;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+} & Omit<HTMLAttributes<'a'> & HTMLAttributes<'button'>, 'type' | 'class'>;
+
+const { variant = 'primary', href, type = 'button', class: className, ...rest } = Astro.props;
+
+const base =
+  'btn inline-flex min-h-12 items-center justify-center gap-2 rounded-btn px-6 font-display font-semibold no-underline transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50';
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-steel text-white hover:bg-btn-hover hover:text-white',
+  outline: 'border border-border-control bg-transparent text-fg-strong hover:border-accent hover:text-accent',
+  cream: 'bg-cream text-ink hover:text-ink hover:brightness-95',
+};
+
+const classes = [base, variants[variant], className];
+---
+{
+  href ? (
+    <a href={href} class:list={classes} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={classes} {...rest}>
+      <slot />
+    </button>
+  )
+}

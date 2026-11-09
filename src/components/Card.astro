@@ -1,0 +1,51 @@
+---
+/**
+ * Card: bg-surface, rounded-card. Optional image (alt is required when src is set).
+ * Pass href to make the whole card a link.
+ */
+interface Props {
+  title: string;
+  href?: string;
+  image?: { src: string; alt: string; width?: number; height?: number };
+  eyebrow?: string;
+  class?: string;
+}
+const { title, href, image, eyebrow, class: className } = Astro.props;
+---
+<article
+  class:list={[
+    'group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface',
+    className,
+  ]}
+>
+  {
+    image && (
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+        decoding="async"
+        class="aspect-[16/10] w-full object-cover"
+      />
+    )
+  }
+  <div class="flex flex-1 flex-col gap-2 p-6">
+    {eyebrow && <p class="type-label">{eyebrow}</p>}
+    <h3 class="type-card">
+      {
+        href ? (
+          <a href={href} class="text-fg-strong no-underline after:absolute after:inset-0 hover:text-accent">
+            {title}
+          </a>
+        ) : (
+          title
+        )
+      }
+    </h3>
+    <div class="type-body">
+      <slot />
+    </div>
+  </div>
+</article>

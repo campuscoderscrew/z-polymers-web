@@ -1,0 +1,5 @@
+<!-- PLACEHOLDER until the final Z-Polymers logo file arrives. In pages, use <Logo /> instead. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="#1d1f20">
+  <path d="M4 6h28v5L13 30h19v5H3v-5l19-19H4z"/>
+  <text x="44" y="29" font-family="Quicksand, sans-serif" font-weight="600" font-size="22" letter-spacing="1">Z-POLYMERS</text>
+</svg>

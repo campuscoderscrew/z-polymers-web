@@ -1,0 +1,74 @@
+---
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import { mainNav, whereToBuy } from './nav';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href;
+---
+<a
+  href="#main"
+  class="sr-only z-50 rounded-btn bg-steel px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+>
+  Skip to content
+</a>
+<header class="sticky top-0 z-40 border-b border-border bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/85">
+  <div class="container-site flex h-16 items-center justify-between gap-6 md:h-20">
+    <a href="/" class="flex items-center no-underline" aria-label="Z-Polymers home">
+      <Logo class="h-7 md:h-8" title="" />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-6">
+        {
+          mainNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                class="font-display font-medium text-fg no-underline hover:text-accent aria-[current=page]:text-accent"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="hidden lg:block">
+      <Button href={whereToBuy.href}>{whereToBuy.label}</Button>
+    </div>
+
+    <!-- Mobile nav: <details> works without JavaScript -->
+    <details class="group lg:hidden">
+      <summary
+        class="flex min-h-12 min-w-12 cursor-pointer list-none items-center justify-center rounded-btn border border-border-control text-fg-strong [&::-webkit-details-marker]:hidden"
+        aria-label="Menu"
+      >
+        <svg class="h-6 w-6 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg class="hidden h-6 w-6 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </summary>
+      <nav aria-label="Main" class="absolute inset-x-0 top-full border-b border-border bg-bg">
+        <ul class="container-site flex flex-col py-4">
+          {
+            mainNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isCurrent(item.href) ? 'page' : undefined}
+                  class="flex min-h-12 items-center font-display font-medium text-fg no-underline hover:text-accent aria-[current=page]:text-accent"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="pt-3">
+            <Button href={whereToBuy.href} class="w-full">{whereToBuy.label}</Button>
+          </li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+---
+/**
+ * Where to buy. This page's single cream band is the seller list.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Section from '@/components/Section.astro';
+---
+<BaseLayout
+  title="Where to buy"
+  description="Buy Tullomer™ filament and fiber from Z-Polymers or an authorized distributor."
+>
+  <PageHero
+    eyebrow="Where to buy"
+    title="Where to buy Tullomer™"
+    lede="Buy direct from Z-Polymers or from an authorized distributor."
+  />
+
+  <Section tone="cream" id="sellers" heading="Sellers">
+    <p class="type-body mx-auto text-center">TODO: seller list from the concept page ("Website v2").</p>
+  </Section>
+
+  <Section tone="steel" id="bulk" heading="Bulk and fiber orders">
+    <p class="type-body mx-auto text-center">
+      TODO: bulk order details from the concept page. <a href="/contact">Contact sales</a>.
+    </p>
+  </Section>
+</BaseLayout>
