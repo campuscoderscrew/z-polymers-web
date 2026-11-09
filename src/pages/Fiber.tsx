@@ -4,7 +4,7 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
+import PageHero from '@/components/shared/PageHero';
 
 export default function Fiber() {
   return (

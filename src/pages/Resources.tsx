@@ -4,9 +4,9 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import ResourcesList from '@/components/pages/ResourcesList.jsx';
-import VideoSection from '@/components/material/VideoSection.jsx';
+import PageHero from '@/components/shared/PageHero';
+import ResourcesList from '@/components/pages/ResourcesList';
+import VideoSection from '@/components/material/VideoSection';
 
 export default function Resources() {
   return (

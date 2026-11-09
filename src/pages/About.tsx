@@ -4,8 +4,8 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import CompanyStory from '@/components/pages/CompanyStory.jsx';
+import PageHero from '@/components/shared/PageHero';
+import CompanyStory from '@/components/pages/CompanyStory';
 
 export default function About() {
   return (

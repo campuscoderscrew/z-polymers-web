@@ -4,8 +4,8 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import ResellerList from '@/components/pages/ResellerList.jsx';
+import PageHero from '@/components/shared/PageHero';
+import ResellerList from '@/components/pages/ResellerList';
 
 export default function WhereToBuy() {
   return (

@@ -7,7 +7,7 @@ import { Link } from 'react-router';
  * Replace this placeholder div with the real component. Keep the export name.
  */
 // Temporary plain links so every page stays reachable while #3 is being built.
-const links = [['/', 'Home'], ['/material', 'Material'], ['/applications', 'Applications'], ['/z-cad', 'Z-CAD'], ['/resources', 'Resources'], ['/about', 'About'], ['/contact', 'Contact'], ['/where-to-buy', 'Where to buy']];
+const links: [string, string][] = [['/', 'Home'], ['/material', 'Material'], ['/applications', 'Applications'], ['/z-cad', 'Z-CAD'], ['/resources', 'Resources'], ['/about', 'About'], ['/contact', 'Contact'], ['/where-to-buy', 'Where to buy']];
 
 export default function Navbar() {
   return (

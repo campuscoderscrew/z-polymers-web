@@ -1,18 +1,18 @@
-import ChecklistCard from '../shared/ChecklistCard.jsx';
+import ChecklistCard from '../shared/ChecklistCard';
 
 /**
- * #16 Pure vs MMP cards · Sprint 48, task 3
- * Used on: Home
+ * #19 Why replace aluminum and steel · Sprint 49, task 3
+ * Used on: Material
  * Note: Reuse #10 Checklist card
  * Replace this placeholder div with the real component. Keep the export name.
  */
-export default function PureVsMmpCards() {
+export default function WhyReplaceMetals() {
   return (
     <div className="placeholder min-h-64">
-      <p className="placeholder-title">#16 Pure vs MMP cards</p>
+      <p className="placeholder-title">#19 Why replace aluminum and steel</p>
       <ul>
         <li>Two #10 Checklist cards side by side</li>
-        <li>Pure Tullomer | Multi-material with Z-CAD</li>
+        <li>vs aluminum and steel | vs other polymers</li>
       </ul>
       <div className="grid gap-6 md:grid-cols-2">
         <ChecklistCard />

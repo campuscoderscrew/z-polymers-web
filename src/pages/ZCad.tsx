@@ -4,8 +4,8 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import ZcadTool from '@/components/pages/ZcadTool.jsx';
+import PageHero from '@/components/shared/PageHero';
+import ZcadTool from '@/components/pages/ZcadTool';
 
 export default function ZCad() {
   return (

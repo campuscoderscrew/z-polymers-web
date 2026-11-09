@@ -3,13 +3,13 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import HomeHero from '@/components/home/HomeHero.jsx';
-import SpecRail from '@/components/shared/SpecRail.jsx';
-import StrengthBarChart from '@/components/shared/StrengthBarChart.jsx';
-import ZcadLiteWidget from '@/components/home/ZcadLiteWidget.jsx';
-import PathsCards from '@/components/home/PathsCards.jsx';
-import HowZcadWorks from '@/components/home/HowZcadWorks.jsx';
-import PureVsMmpCards from '@/components/home/PureVsMmpCards.jsx';
+import HomeHero from '@/components/home/HomeHero';
+import SpecRail from '@/components/shared/SpecRail';
+import StrengthBarChart from '@/components/shared/StrengthBarChart';
+import ZcadLiteWidget from '@/components/home/ZcadLiteWidget';
+import PathsCards from '@/components/home/PathsCards';
+import HowZcadWorks from '@/components/home/HowZcadWorks';
+import PureVsMmpCards from '@/components/home/PureVsMmpCards';
 
 export default function Home() {
   return (

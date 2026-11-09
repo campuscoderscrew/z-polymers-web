@@ -68,7 +68,7 @@ scripts/        check-brand.mjs: the brand guard
 
 The site is split into components #1–#27, matching the team sheet. Each one starts as a dashed placeholder box that lists what belongs there, and it's already placed on the right pages, so you can see where your work will appear.
 
-1. Find your component number on the team sheet and open its file (the header comment has the number, sprint, task and which pages use it). For example, #17 is `src/components/material/SpecTable.jsx`.
+1. Find your component number on the team sheet and open its file (the header comment has the number, sprint, task and which pages use it). For example, #17 is `src/components/material/SpecTable.tsx`.
 2. Replace the placeholder `<div className="placeholder">…</div>` with the real component. **Keep the file name and the export name**, so the pages that use it keep working.
 3. Build it from the concept page ("Website v2") with brand tokens and type classes. Reuse the building blocks in `src/components/`: `<Section>`, `<Card>`, `<Logo />`, and the reference `Button.tsx` / `PageHero.tsx`.
 4. Something clickable (tabs, charts, lookups)? Use React state. `SpecTabs.tsx` is the reference for keyboard support.

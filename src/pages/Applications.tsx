@@ -4,8 +4,8 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import ApplicationCards from '@/components/pages/ApplicationCards.jsx';
+import PageHero from '@/components/shared/PageHero';
+import ApplicationCards from '@/components/pages/ApplicationCards';
 
 export default function Applications() {
   return (

@@ -4,7 +4,7 @@
  * withHeading renders #7 Section heading above the content.
  */
 import type { ReactNode } from 'react';
-import SectionHeading from '@/components/shared/SectionHeading.jsx';
+import SectionHeading from '@/components/shared/SectionHeading';
 
 type Props = {
   tone?: 'bg' | 'alt';

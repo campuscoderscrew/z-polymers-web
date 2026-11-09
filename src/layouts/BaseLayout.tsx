@@ -3,9 +3,9 @@
  * The shared components are placeholders until each one is built.
  */
 import { Outlet, ScrollRestoration } from 'react-router';
-import NoticeBar from '@/components/shared/NoticeBar.jsx';
-import Header from '@/components/shared/Header.jsx';
-import Footer from '@/components/shared/Footer.jsx';
+import NoticeBar from '@/components/shared/NoticeBar';
+import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
 
 export default function BaseLayout() {
   return (

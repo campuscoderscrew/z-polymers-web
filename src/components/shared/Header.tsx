@@ -1,6 +1,6 @@
-import Navbar from './Navbar.jsx';
-import MobileMenu from './MobileMenu.jsx';
-import Button from './Button.jsx';
+import Navbar from './Navbar';
+import MobileMenu from './MobileMenu';
+import Button from './Button';
 
 /**
  * #2 Header · Sprint 46, task 6

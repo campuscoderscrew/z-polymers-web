@@ -4,12 +4,12 @@
  */
 import Seo from '@/components/Seo';
 import Band from '@/components/Band';
-import PageHero from '@/components/shared/PageHero.jsx';
-import SpecRail from '@/components/shared/SpecRail.jsx';
-import SpecTable from '@/components/material/SpecTable.jsx';
-import WhyReplaceMetals from '@/components/material/WhyReplaceMetals.jsx';
-import DownloadsList from '@/components/material/DownloadsList.jsx';
-import VideoSection from '@/components/material/VideoSection.jsx';
+import PageHero from '@/components/shared/PageHero';
+import SpecRail from '@/components/shared/SpecRail';
+import SpecTable from '@/components/material/SpecTable';
+import WhyReplaceMetals from '@/components/material/WhyReplaceMetals';
+import DownloadsList from '@/components/material/DownloadsList';
+import VideoSection from '@/components/material/VideoSection';
 
 export default function Material() {
   return (
