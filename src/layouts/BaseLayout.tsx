@@ -16,9 +16,7 @@ export default function BaseLayout() {
       >
         Skip to content
       </a>
-      <div className="container-site py-3">
-        <NoticeBar />
-      </div>
+      <NoticeBar />
       <Header />
       <main id="main" className="flex-1">
         <Outlet />

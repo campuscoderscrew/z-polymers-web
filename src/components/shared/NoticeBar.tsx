@@ -1,16 +1,11 @@
-/**
- * #1 Notice bar · Sprint 46, task 5
- * Used on: Every page
- * Replace this placeholder div with the real component. Keep the export name.
- */
+/** #1 Notice bar: full-width steel strip with the design-concept disclaimer. Every page. */
 export default function NoticeBar() {
   return (
-    <div className="placeholder">
-      <p className="placeholder-title">#1 Notice bar</p>
-      <ul>
-        <li>Design concept disclaimer text, centered</li>
-        <li>Steel band, white text, 13px</li>
-      </ul>
+    <div className="band-steel">
+      <p className="container-site py-2 text-center text-[13px] leading-snug">
+        Design concept v2. Z-CAD Lite, forms, downloads and reseller links are placeholders and don't send, process or
+        save anything.
+      </p>
     </div>
   );
 }
