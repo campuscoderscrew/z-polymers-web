@@ -1,6 +1,6 @@
 import Seo from '@/components/Seo';
 import PageHero from '@/components/PageHero';
-import Button from '@/components/Button';
+import Button from '@/components/shared/Button';
 
 export default function NotFound() {
   return (

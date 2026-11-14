@@ -24,7 +24,7 @@ export default function Header() {
         </div>
         <div className="hidden flex-1 flex-col gap-3 lg:flex">
           <Navbar />
-          <Button />
+          <Button variant="cream" href="/where-to-buy">Where to buy</Button>
         </div>
         <div className="lg:hidden">
           <MobileMenu />
