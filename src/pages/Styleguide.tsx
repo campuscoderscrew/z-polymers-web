@@ -6,7 +6,7 @@
 import { ArrowRight, CircleAlert, CircleCheck, Download, Factory, Printer } from 'lucide-react';
 import Seo from '@/components/Seo';
 import Section from '@/components/Section';
-import Button from '@/components/Button';
+import Button from '@/components/shared/Button';
 import Card from '@/components/Card';
 import Logo from '@/components/Logo';
 import SpecTabs from '@/components/SpecTabs';
@@ -137,6 +137,8 @@ export default function Styleguide() {
             <Button>Primary</Button>
             <Button variant="outline">Outline</Button>
             <Button disabled>Disabled</Button>
+            <Button variant="cream" href="/where-to-buy">Where to buy</Button>
+            <Button variant="download" href="/logo.svg">Logo file</Button>
             <Button href="#buttons">
               Link button <ArrowRight size={20} strokeWidth={1.75} aria-hidden="true" />
             </Button>
