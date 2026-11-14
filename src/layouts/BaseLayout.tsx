@@ -1,6 +1,6 @@
 /**
  * Site shell: skip link, #1 Notice bar, #2 Header, routed page, #5 Footer.
- * The shared components are placeholders until each one is built.
+ * Notice bar, header and footer are the real shared components (Sprint 46).
  */
 import { Outlet, ScrollRestoration } from 'react-router';
 import NoticeBar from '@/components/shared/NoticeBar';

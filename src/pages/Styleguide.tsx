@@ -138,7 +138,7 @@ export default function Styleguide() {
             <Button variant="outline">Outline</Button>
             <Button disabled>Disabled</Button>
             <Button variant="cream" href="/where-to-buy">Where to buy</Button>
-            <Button variant="download" href="/downloads/example.pdf">Data sheet</Button>
+            <Button variant="download" href="/logo.svg">Logo file</Button>
             <Button href="#buttons">
               Link button <ArrowRight size={20} strokeWidth={1.75} aria-hidden="true" />
             </Button>
