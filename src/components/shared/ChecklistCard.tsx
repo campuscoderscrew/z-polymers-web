@@ -1,18 +1,31 @@
 /**
  * #10 Checklist card · Sprint 47, task 4
  * Used on: #16 Pure vs MMP cards, #19 Why replace aluminum and steel
- * Replace this placeholder div with the real component. Keep the export name.
+ * Bordered card: small label, optional title, list with diamond bullets, optional "Best for" line.
  */
-export default function ChecklistCard() {
+type Props = {
+  label: string;
+  title?: string;
+  items: string[];
+  bestFor?: string;
+};
+
+export default function ChecklistCard({ label, title, items, bestFor }: Props) {
   return (
-    <div className="placeholder min-h-64">
-      <p className="placeholder-title">#10 Checklist card</p>
-      <ul>
-        <li>Bordered card</li>
-        <li>Small label + title</li>
-        <li>List with diamond bullets</li>
-        <li>"Best for" line at the bottom</li>
+    <article className="flex min-w-0 flex-col gap-5 rounded-card border border-border bg-surface p-6 md:p-8">
+      <p className="type-label">{label}</p>
+      {title && <h3 className="type-card">{title}</h3>}
+      <ul className="flex flex-col">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="type-body grid grid-cols-[1.25rem_minmax(0,1fr)] gap-2.5 border-t border-border py-3 text-fg-strong before:mt-2.5 before:size-2 before:rotate-45 before:border-[1.5px] before:border-accent"
+          >
+            {item}
+          </li>
+        ))}
       </ul>
-    </div>
+      {bestFor && <p className="type-caption">{bestFor}</p>}
+    </article>
   );
 }

@@ -16,7 +16,11 @@ export default function Applications() {
         path="/applications"
       />
       <Band>
-        <PageHero />
+        <PageHero
+          page="Applications"
+          title="Applications"
+          lede="Pure Tullomer parts print entirely in Tullomer and keep every property of the material. Multi-material parts use Z-CAD to place Tullomer reinforcement inside a second material."
+        />
       </Band>
       <Band tone="alt">
         <ApplicationCards />

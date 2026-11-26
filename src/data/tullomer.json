@@ -5,11 +5,17 @@
     "name": "Tullomer™ filament",
     "diameter": { "value": null, "unit": "mm", "tolerance": null, "method": null },
     "density": { "value": null, "unit": "g/cm³", "method": null },
-    "tensileStrength": { "value": null, "unit": "MPa", "method": null },
+    "tensileStrength": { "value": 500, "unit": "MPa", "method": null, "source": "concept v2, unconfirmed by Mike" },
     "tensileModulus": { "value": null, "unit": "GPa", "method": null },
     "elongationAtBreak": { "value": null, "unit": "%", "method": null },
     "flexuralStrength": { "value": null, "unit": "MPa", "method": null },
     "heatDeflectionTemp": { "value": null, "unit": "°C", "method": null },
+    "weightVsSteel": { "value": "1/6", "unit": "", "method": null, "source": "concept v2, unconfirmed by Mike" },
+    "flammability": { "value": "UL 94 V-0", "unit": "", "method": null, "source": "concept v2, unconfirmed by Mike" },
+    "dielectricConstant": { "value": "≤ 3", "unit": "", "method": null, "source": "concept v2, unconfirmed by Mike" },
+    "lossTangent": { "value": 0.001, "unit": "", "method": null, "source": "concept v2, unconfirmed by Mike" },
+    "frequencyStability": { "value": 100, "unit": "GHz", "method": null, "source": "concept v2, unconfirmed by Mike" },
+    "outgassing": { "value": "Lowest", "unit": "", "method": null, "source": "concept v2, unconfirmed by Mike" },
     "print": {
       "nozzleTemp": { "min": null, "max": null, "unit": "°C", "method": null },
       "bedTemp": { "min": null, "max": null, "unit": "°C", "method": null },
@@ -22,5 +28,26 @@
     "tenacity": { "value": null, "unit": "g/den", "method": null },
     "elongationAtBreak": { "value": null, "unit": "%", "method": null },
     "density": { "value": null, "unit": "g/cm³", "method": null }
+  },
+  "comparison": {
+    "tensileStrength": {
+      "unit": "MPa",
+      "method": null,
+      "source": "concept v2, unconfirmed by Mike; competitor names need Mike's OK",
+      "items": [
+        {
+          "name": "PEI GF30",
+          "value": 145
+        },
+        {
+          "name": "PEEK CF20",
+          "value": 126
+        },
+        {
+          "name": "PEEK",
+          "value": 100
+        }
+      ]
+    }
   }
 }
