@@ -16,7 +16,7 @@ export default function WhereToBuy() {
         path="/where-to-buy"
       />
       <Band>
-        <PageHero />
+        <PageHero page="Where to buy" title="Where to buy" />
       </Band>
       <Band tone="alt">
         <ResellerList />

@@ -16,7 +16,7 @@ export default function About() {
         path="/about"
       />
       <Band>
-        <PageHero />
+        <PageHero page="About" title="Material science" accent="built to push what's possible" />
       </Band>
       <Band tone="alt">
         <CompanyStory />

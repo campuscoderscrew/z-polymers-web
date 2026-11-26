@@ -20,21 +20,34 @@ export default function Material() {
         path="/material"
       />
       <Band>
-        <PageHero />
+        <PageHero
+          page="Material"
+          title="Tullomer™"
+          accent="super polymer"
+          lede="A high-performance liquid crystal polymer, produced as pellets, 3D printing filament, ultra-fine monofilament and multifilament yarn. Lightweight and very strong, with high thermal performance and the chemical resistance to outlast other polymers."
+        />
       </Band>
       <Band tone="alt">
         <SpecRail />
       </Band>
-      <Band withHeading>
+      <Band>
         <SpecTable />
       </Band>
-      <Band tone="alt" withHeading>
+      <Band tone="alt" heading={{
+          label: 'Compared with metals',
+          title: 'Why replace aluminum and steel',
+          intro: 'Against aluminum, stainless steel and magnesium, Tullomer parts are lighter, resist corrosion and come off the printer ready to use.',
+        }}>
         <WhyReplaceMetals />
       </Band>
-      <Band withHeading>
+      <Band>
         <DownloadsList />
       </Band>
-      <Band tone="alt" withHeading>
+      <Band tone="alt" heading={{
+          label: 'See it tested',
+          title: "Don't take our word for it",
+          intro: 'Pull tests, adhesion demos and independent reviews.',
+        }}>
         <VideoSection />
       </Band>
     </>

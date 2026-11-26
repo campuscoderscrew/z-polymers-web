@@ -16,7 +16,12 @@ export default function Contact() {
         path="/contact"
       />
       <Band>
-        <PageHero />
+        <PageHero
+          page="Contact"
+          title="Talk to an"
+          accent="engineer"
+          lede="Request an application review, ask for the latest specifications, or tell us what you're building."
+        />
       </Band>
       <Band tone="alt">
         <div className="grid gap-6 md:grid-cols-[2fr_1fr]">

@@ -16,7 +16,12 @@ export default function ZCad() {
         path="/z-cad"
       />
       <Band>
-        <PageHero />
+        <PageHero
+          page="Z-CAD"
+          title="Z-CAD"
+          accent="does the second model for you."
+          lede="Adding reinforcement used to mean designing every part twice. Z-CAD generates the Tullomer reinforcement body automatically and optimizes where it goes, so it fits into the workflow you already have."
+        />
       </Band>
       <Band tone="alt">
         <ZcadTool />

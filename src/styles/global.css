@@ -328,3 +328,16 @@
     padding-left: 1.2em;
   }
 }
+
+/* Motion used by #11 Strength bar chart and #12 Home hero (applied with motion-safe:). */
+@keyframes grow {
+  from {
+    transform: scaleX(0.08);
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}

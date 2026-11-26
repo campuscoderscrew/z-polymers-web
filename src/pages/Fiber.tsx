@@ -15,7 +15,7 @@ export default function Fiber() {
         path="/material/fiber"
       />
       <Band>
-        <PageHero />
+        <PageHero page="Fiber" title="Tullomer™" accent="fiber" />
       </Band>
     </>
   );

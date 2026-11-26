@@ -13,6 +13,8 @@ export type Spec = {
   unit: string;
   method: string | null;
   tolerance?: number | null;
+  /** Set while a value is not yet from the official datasheet. */
+  source?: string;
 };
 
 export type SpecRange = {
@@ -46,7 +48,7 @@ export function getRange(path: string): SpecRange {
 }
 
 const fmt = (n: number | string) => (typeof n === 'number' ? n.toLocaleString('en-US') : n);
-const withUnit = (v: string, unit: string) => (unit === '%' ? `${v}%` : `${v} ${unit}`);
+const withUnit = (v: string, unit: string) => (!unit ? v : unit === '%' ? `${v}%` : `${v} ${unit}`);
 
 /** Formatted value with unit, e.g. "52 MPa". Shows "—" while the value is null. */
 export function spec(path: string): string {
@@ -66,4 +68,18 @@ export function specRange(path: string): string {
 /** The test method behind a spec, or null. Show it next to the number. */
 export function specMethod(path: string): string | null {
   return (lookup(path) as { method?: string | null }).method ?? null;
+}
+
+export type Comparison = {
+  unit: string;
+  method: string | null;
+  source?: string;
+  items: { name: string; value: number }[];
+};
+
+/** Competitor values for a chart, e.g. comparison('tensileStrength'). */
+export function comparison(key: string): Comparison {
+  const c = (tullomer.comparison as Record<string, Comparison | undefined>)[key];
+  if (!c) throw new Error(`Unknown comparison: "${key}"`);
+  return c;
 }

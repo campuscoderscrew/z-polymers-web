@@ -17,12 +17,16 @@ export default function Resources() {
         path="/resources"
       />
       <Band>
-        <PageHero />
+        <PageHero page="Resources" title="Resources" lede="Technical data, printer profiles, guides and the latest news on Tullomer." />
       </Band>
       <Band tone="alt">
         <ResourcesList />
       </Band>
-      <Band withHeading>
+      <Band heading={{
+          label: 'See it tested',
+          title: "Don't take our word for it",
+          intro: 'Pull tests, adhesion demos and independent reviews.',
+        }}>
         <VideoSection />
       </Band>
     </>
